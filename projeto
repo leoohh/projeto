@@ -1,0 +1,98 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<locale.h>
+
+int main(){
+
+    setlocale( LC_ALL,"portuguese");
+
+int codigo;
+char titular;
+char tipodeconta;
+float saldo;
+float deposito;
+float saque;
+float depositot;
+float saquet;
+int i;
+
+printf ("\n--------------Cadastro--------------\n");
+printf("Nome do titular:");
+scanf("%s", &titular);
+printf("\ntipo de conta:\n1 - corrente\n2 - poupança\n");
+scanf("%s",&tipodeconta);
+
+fflush (stdin);
+
+printf("iNFORME O SALDO ATUAL PRESENTE EM SUA CONTA:\n");
+scanf("%f",&saldo);
+fflush (stdin);
+
+system ("cls || clear");
+
+printf("-------------------------------------");
+
+printf("QUAL OPERAÇAO DESEJA FAZER?\n");
+
+
+
+for ( i = 0; i < 50; i++)
+{
+printf("\n---------OPÇÕES---------\n");
+printf("\n1-Deposito");
+printf("\n2- Saque");
+printf("\n3- Extrato");
+printf("\n4- Mostrar resultados da operação");
+
+printf("\nInforme a opção que deseja:");
+scanf ("%d", &codigo);
+   
+switch (codigo)
+{
+case 1:
+fflush (stdin);
+
+
+    printf("Quanto deseja depositar?\n");
+    scanf("%f", &deposito);
+    printf ("DEPOSITO REALIZADO\n");
+    saldo += deposito;
+    depositot += deposito;
+break;
+
+case 2:
+printf("Quanto deseja sacar?\n");
+scanf("%f", &saque);
+printf ("SAQUE REALIZADO");
+saldo += saque;
+saquet += saque;
+break;
+
+case 3:
+printf("\n SALDO ATUAL: %f", saldo);
+break;
+
+case 4 :
+
+fflush (stdin);
+
+printf("\nNome do titular:%s", titular);
+printf("\nTipo de conta:%s", tipodeconta);
+printf("\nsaldo atual:%.2f", saldo);
+printf("\ntotal depositado:%.2f", depositot);
+printf("\ntotal sacado: %.2f", saquet);
+break;
+
+
+}
+
+
+}
+
+
+
+
+
+return 0;
+}

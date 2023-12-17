@@ -1,0 +1,98 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <locale.h>
+
+struct ContaBancaria
+{
+    char titular[100];
+    char tipoDeConta[100];
+    float saldo;
+
+    // struct ContaBancaria(criarConta)();
+    // void(depositar)(struct ContaBancaria *conta, float deposito);
+    // void(sacar)(struct ContaBancaria *conta, float sacar);
+    // void(extrato)(struct ContaBancaria *conta);
+};
+
+struct ContaBancaria criarConta()
+{
+     fflush (stdin);
+    struct ContaBancaria conta;
+
+    printf("\n--------------Cadastro--------------\n");
+    printf("Digite o nome do titular:");
+    scanf("%s", &conta.titular);
+    printf("\nInforme o tipo de conta:\nCorrente\nPoupança\n");
+    scanf("%s", &conta.tipoDeConta);
+    printf("iNFORME O SALDO ATUAL PRESENTE EM SUA CONTA:\n");
+    scanf("%f", &conta.saldo);
+    return conta;
+}
+
+void depositar(struct ContaBancaria *conta)
+{
+     fflush (stdin);
+    float deposito;
+
+    printf("Quanto deseja depositar?");
+    scanf("%f", &deposito);
+    conta->saldo = conta->saldo + deposito;
+    printf("Deposito realizado com sucesso");
+}
+
+void sacar(struct ContaBancaria *conta)
+{
+     fflush (stdin);
+    float sacar;
+
+    printf("Quanto deseja sacar?");
+    scanf("%f", &sacar);
+    conta->saldo = conta->saldo - sacar;
+    printf("Saque realizado com sucesso");
+}
+
+void extrato(struct ContaBancaria *conta)
+{
+     fflush (stdin);
+    printf("Nome do titular:%s\n", conta->titular);
+    printf("Tipo de conta:%s\n", conta->tipoDeConta);
+    printf("Salto atual:%f\n", conta->saldo);
+}
+
+
+
+int main()
+{
+    setlocale(LC_ALL, "portuguese");
+    int codigo;
+
+    struct ContaBancaria minhaconta = criarConta();
+
+    do
+    {
+        
+        
+    fflush (stdin);
+    int codigo;
+
+    printf("-----Operações diponiveis-----\n1 - Dpositar\n2 - Sacar\n3 - Ver saldo\n0 - Encerrar operação");
+    scanf("%d", &codigo);
+
+    switch (codigo)
+    {
+    case 1:
+        depositar(&minhaconta);
+        break;
+    case 2:
+        sacar(&minhaconta);
+        break;
+    case 3:
+        extrato(&minhaconta);
+    default:
+        break;
+    }
+    } while (codigo != 0);
+
+    return 0;
+}
